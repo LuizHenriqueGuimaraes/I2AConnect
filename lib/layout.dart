@@ -42,9 +42,6 @@ class Layout{
       selectedItemColor: Colors.blue,
 
       ),
-
-
-
     );
   }
 }
