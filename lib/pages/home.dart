@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aplicativo/layout.dart';
+import 'package:aplicativo/layout/layout.dart';
 import 'package:aplicativo/pages/about.dart';
 
 class HomePage extends StatelessWidget{

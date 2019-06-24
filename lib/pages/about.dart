@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aplicativo/layout.dart';
+import 'package:aplicativo/layout/layout.dart';
 
 class AboutPage extends StatelessWidget{
 

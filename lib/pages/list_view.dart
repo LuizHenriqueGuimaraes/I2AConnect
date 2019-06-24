@@ -2,7 +2,7 @@ import 'package:aplicativo/models/touro.dart';
 import 'package:aplicativo/pages/detalhes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:aplicativo/layout.dart';
+import 'package:aplicativo/layout/layout.dart';
 
 class ListViewPage extends StatefulWidget{
 
