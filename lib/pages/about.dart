@@ -8,7 +8,14 @@ class AboutPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Layout.getContent( context, Center(
-        child: Text('Este aplicativo foi criado por Luiz Henrique Guimarães'),
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/abc.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        )
       ));
   }
 

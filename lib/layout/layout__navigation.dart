@@ -3,6 +3,8 @@ import 'package:aplicativo/pages/home.dart';
 import 'package:aplicativo/pages/list_view.dart';
 import 'package:aplicativo/pages/resultado.dart';
 
+import 'package:aplicativo/pages/about.dart';
+
 class LayoutNavigation extends StatefulWidget{
 
   @override
@@ -17,9 +19,10 @@ class LayoutNavigationState extends State<LayoutNavigation>{
   int currentIndex = 0;
   final List<Widget> pages = [
     HomePage(),
-    ListViewPage(),
+    //ListViewPage(),
+    AboutPage(),
+
     ResultadoViewPage(),
-    ListViewPage(),
     //ResultadoViewPage(),
     //ListViewWidget(),ListViewWidget(),
 
