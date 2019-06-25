@@ -10,11 +10,10 @@ class LoginPage extends StatelessWidget {
       body: Container(
         child: Column(
           children: <Widget>[
+            /*
             Container(
-                width:
-                    MediaQuery.of(context).size.width, //Pega o tamanho da tela
-                height: MediaQuery.of(context).size.height *
-                    (0.4), //Altura é 40% da tela
+                width: MediaQuery.of(context).size.width, //Pega o tamanho da tela
+                height: MediaQuery.of(context).size.height * (0.4), //Altura é 40% da tela
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         colors: [Color(0xFF120A8F), Color(0xFF1E84D4)],
@@ -51,57 +50,74 @@ class LoginPage extends StatelessWidget {
                     ),
                   ],
                 )),
-            Container(
-              //height:  MediaQuery.of(context).size.height -  (MediaQuery.of(context).size.height * (0.5)),
-              padding: EdgeInsets.only(
-                top: 64,
-              ),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.8, //Pega o tamanho da tela
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(100)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 20)
-                      ],
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10000)),
-                        prefixIcon: Icon(Icons.label_important),
-                        hintText: 'Login',
+            */
+
+            Card(
+
+              elevation: 10,
+              child: Container(
+                //height:  MediaQuery.of(context).size.height -  (MediaQuery.of(context).size.height * (0.5)),
+                padding: EdgeInsets.only(top: 8,),
+                color: Colors.blue,
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.5,
+
+
+                child: Column(
+                  children: <Widget>[
+                    //Login TextField
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.85, //Pega o tamanho da tela
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(100)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(color: Colors.black, blurRadius: 20)
+                        ],
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10000)),
+                          prefixIcon: Icon(Icons.label_important),
+                          hintText: 'Login',
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width *
-                        0.8, //Pega o tamanho da tela
-                    margin: EdgeInsets.only(
-                      top: 32,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(100)),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, blurRadius: 20)
-                      ],
-                    ),
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(100)),
-                        prefixIcon: Icon(Icons.vpn_key),
-                        hintText: 'Senha',
+                    //Senha TextField
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.85, //Pega o tamanho da tela
+                      margin: EdgeInsets.only(
+                        top: 8,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(100)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(color: Colors.black, blurRadius: 20)
+                        ],
+                      ),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                          prefixIcon: Icon(Icons.vpn_key),
+                          hintText: 'Senha',
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+
+
+
             ),
+
+
+
+
             Align(
                 alignment: Alignment.centerRight,
                 child: Padding(

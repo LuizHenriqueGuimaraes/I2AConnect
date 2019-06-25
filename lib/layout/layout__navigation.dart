@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplicativo/pages/home.dart';
 import 'package:aplicativo/pages/list_view.dart';
-//import 'package:app/pages/resultado.dart';
+import 'package:aplicativo/pages/resultado.dart';
 
 class LayoutNavigation extends StatefulWidget{
 
@@ -18,6 +18,7 @@ class LayoutNavigationState extends State<LayoutNavigation>{
   final List<Widget> pages = [
     HomePage(),
     ListViewPage(),
+    ResultadoViewPage(),
     ListViewPage(),
     //ResultadoViewPage(),
     //ListViewWidget(),ListViewWidget(),
