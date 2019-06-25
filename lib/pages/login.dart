@@ -12,12 +12,12 @@ class LoginPage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/background_login.png"),
-            fit: BoxFit.fill,
+            fit: BoxFit.fitHeight,
           ),
         ),
 
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
           child: Column(
             children: <Widget>[
               /*
