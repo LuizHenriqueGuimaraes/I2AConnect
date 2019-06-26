@@ -18,7 +18,8 @@ class Aplicativo extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primaryColor: Colors.black,
+          bottomAppBarColor: Color(0xFF244767),
+          primaryColor: Color(0xFF244767),
           accentColor: Colors.black45,
           textTheme: TextTheme(
             headline: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
