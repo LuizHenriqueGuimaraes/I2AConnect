@@ -16,10 +16,18 @@ class ResultadoViewPage extends StatefulWidget {
 class _ResultadoViewState extends State<ResultadoViewPage> {
   List itens = getListData();
 
+  List<Touro> touros = [
+    Touro(1, "Jagunço IV FIV Shottle Alegre", "https://touros.altagenetics.com.br/Uploads/Bulls/8490/Original.jpg"),
+    Touro(2, "Axxor Avalon RPM da Santo Antônio", "https://touros.altagenetics.com.br/Uploads/Bulls/9423/Original.jpg"),
+    Touro(3, "RBC Arquiteto", "http://www.girolandorbc.com.br/wp-content/uploads/2011/09/slide_touro.jpg"),
+    Touro(4, "Imperor Bolton Santa Luzia", "https://www.crvlagoa.com.br/images/animais/fotos/Imperor_leite%20zebu%202016_maior.jpg"),
+    Touro(5, "Galanteio XA", "http://www.abspecplan.com.br/img/touros-destaque/349172718/galanteio.jpg"),  
+  ];
+
   //Características do card
   int elevationCard = 5;
   double heightCard = 150.0;
-  double widthImage = 100.0;
+  //double widthImage = MediaQuery.of(context).size.width * 0.8;
   double radiusImage = 10.0;
 
 
@@ -31,7 +39,7 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
   Widget build(BuildContext context) {
     final content = Container(
       child: ListView.builder(
-          itemCount: itens.length, //Definir o tamanho da lista
+          itemCount: touros.length, //Definir o tamanho da lista
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
@@ -39,30 +47,30 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
                     CupertinoPageRoute(
                         fullscreenDialog: true,
                         builder: (context) =>
-                            DetalhesPage(touro: new Touro(index, itens[index],
-                                "https://images2.alphacoders.com/500/thumb-1920-500800.jpg"),)
+                            DetalhesPage(touro: touros[index])
                     )
                 );
               }, // Chama o modal de detalhamento
 
               child: Card(
                 elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(radiusImage),
-                ),
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.circular(radiusImage),
+                // ),
 
                 child: ListItem(
+                  index: index,
                   imagem: Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        //borderRadius: BorderRadius.all(Radius.circular(10)),
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                              "https://images2.alphacoders.com/500/thumb-1920-500800.jpg"),
+                              touros[index].urlImagem),
                         )
                     ),
                   ),
-                  titulo: "Título do card",
+                  titulo: touros[index].nome,
                   rgd: "1030843",
                   conf1: "TesteConfig1",
                   conf2: "TesteConfig2",
@@ -87,6 +95,7 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
 class ListItem extends StatelessWidget {
   ListItem({
     Key key,
+    this.index,
     this.imagem,
     this.titulo,
     this.rgd,
@@ -95,6 +104,7 @@ class ListItem extends StatelessWidget {
     this.conf3,
   }) : super(key: key);
 
+  final int index;
   final Widget imagem;
   final String titulo;
   final String rgd;
@@ -102,25 +112,38 @@ class ListItem extends StatelessWidget {
   final String conf2;
   final String conf3;
 
+  AssetImage goldMedal = AssetImage("assets/gold-medal.png");
+  AssetImage silverMedal = AssetImage("assets/silver-medal.png");
+  AssetImage bronzeMedal = AssetImage("assets/bronze-medal.png");
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 0),
       child: SizedBox(
-        height: 100,
+        height: MediaQuery.of(context).size.height * 0.15,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            AspectRatio(
-                aspectRatio: 1.0,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                  child: imagem,
-                )
+            Stack(
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 1.5,
+                  child: imagem
+                ),
+                Image(
+                    height: MediaQuery.of(context).size.height* 0.15 * 0.33,
+                    image:
+                      (index == 0) ? goldMedal :
+                      (index == 1) ? silverMedal :
+                      (index == 2) ? bronzeMedal : AssetImage("assets/empty.png"),
+                    fit: BoxFit.fitHeight,
+                ),
+              ]
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 2.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(20.0, 10.0, 2.0, 10.0),
                 child: TextListItem(
                   title: titulo,
                   rgd: rgd,
@@ -169,7 +192,7 @@ class TextListItem extends StatelessWidget {
               '$title',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20,),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18,),
              ),
 
 
