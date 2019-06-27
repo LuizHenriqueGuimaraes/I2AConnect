@@ -3,6 +3,8 @@ import 'package:aplicativo/layout/layout.dart';
 import 'package:aplicativo/layout/layout__navigation.dart';
 import 'dart:ui';
 
+import 'package:flutter/widgets.dart' as prefix0;
+
 class LoginPage extends StatelessWidget {
   static String tag = 'login-page';
   @override
@@ -70,7 +72,7 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 8,),
                   color: Colors.white,
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: 420,
+                  height: 430,
 
 
                   child: Column(
@@ -78,13 +80,15 @@ class LoginPage extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: Container(
-                          margin: EdgeInsets.only(
-                          top: 16,
-                        ),
-                          width: 120,
-                          height: 120,
+                          margin: EdgeInsets.only(top: 16),
+                          width: 130,
+                          height: 130,
                           decoration: new BoxDecoration(
-                            color: Color(0xFF244767),
+                            image: DecorationImage(
+                              image: AssetImage("assets/logo.jpg"),
+                              fit: BoxFit.fitHeight,
+                            ),
+                            //color: Color(0xFF244767),
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -109,9 +113,7 @@ class LoginPage extends StatelessWidget {
                       //Senha TextField
                       Container(
                         width: MediaQuery.of(context).size.width * 0.75, //Pega o tamanho da tela
-                        margin: EdgeInsets.only(
-                          top: 8,
-                        ),
+                        margin: EdgeInsets.only(top: 8),
                         decoration: BoxDecoration(
                           color: Color(0xFFEEEEEE)
                         ),
