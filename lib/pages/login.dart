@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart' as prefix1;
 import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
 import 'package:aplicativo/layout/layout__navigation.dart';
@@ -14,7 +15,7 @@ class LoginPage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/background_login.png"),
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.cover,
           ),
         ),
 
@@ -65,40 +66,60 @@ class LoginPage extends StatelessWidget {
               */
               Spacer(),
               Card(
-
                 elevation: 10,
                 child: Container(
                   //height:  MediaQuery.of(context).size.height -  (MediaQuery.of(context).size.height * (0.5)),
-                  padding: EdgeInsets.only(top: 8,),
+                  padding: EdgeInsets.only(top: 0),
                   color: Colors.white,
                   width: MediaQuery.of(context).size.width * 0.8,
-                  height: 430,
-
-
+                  height: 400,
                   child: Column(
                     children: <Widget>[
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 16),
-                          width: 130,
-                          height: 130,
-                          decoration: new BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/logo.jpg"),
-                              fit: BoxFit.fitHeight,
+                      Center(
+                        child: Row(
+                          children: <Widget>[
+                            Spacer(),
+                            Container(
+                              margin: EdgeInsets.only(top: 16, left: 0),
+                              width: 130,
+                              height: 130,
+                              decoration: new BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage("assets/logo.png"),
+                                  fit: BoxFit.fitHeight,
+                                ),
+                                //color: Color(0xFF244767),
+                                shape: BoxShape.circle,
+                              ),
                             ),
-                            //color: Color(0xFF244767),
-                            shape: BoxShape.circle,
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16, top: 16),
+                              child: Container(
+                                width: 1,
+                                height: 100,
+                                decoration: new BoxDecoration(
+                                  color: Colors.black38,
+                                  shape: BoxShape.rectangle
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, top: 16),
+                              child: Text(
+                                "I²A CONNECT",
+                                style: TextStyle(
+                                  fontSize: 18
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                          ],
                         ),
                       ),
                       //Login TextField
                       Container(
-                        margin: EdgeInsets.only(
-                          top: 32,
-                        ),
-                        width: MediaQuery.of(context).size.width * 0.75, //Pega o tamanho da tela
+                        margin: EdgeInsets.only(top: 32, left: 16, right: 16),
+                        height: 50,
                         decoration: BoxDecoration(
                           color: Color(0xFFEEEEEE)
                         ),
@@ -107,13 +128,14 @@ class LoginPage extends StatelessWidget {
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.label_important),
                             hintText: 'Login',
+                            contentPadding: EdgeInsets.all(0),
                           ),
                         ),
                       ),
                       //Senha TextField
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.75, //Pega o tamanho da tela
-                        margin: EdgeInsets.only(top: 8),
+                        height: 50,
+                        margin: EdgeInsets.only(top: 8, left: 16, right: 16),
                         decoration: BoxDecoration(
                           color: Color(0xFFEEEEEE)
                         ),
@@ -123,13 +145,12 @@ class LoginPage extends StatelessWidget {
                             border: OutlineInputBorder(),
                             prefixIcon: Icon(Icons.vpn_key),
                             hintText: 'Senha',
+                            contentPadding: EdgeInsets.all(0),
                           ),
                         ),
                       ),
                       Card(
-                        margin: EdgeInsets.only(
-                          top: 32,
-                        ),
+                        margin: EdgeInsets.only(top: 24),
                         elevation: 10,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100),
@@ -148,13 +169,12 @@ class LoginPage extends StatelessWidget {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(100))),
 
-                            child: Padding(padding: const EdgeInsets.only(
-                                top: 8, bottom: 8
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8, bottom: 8),
                               child: Center(
                                   child: Text("Login".toUpperCase(), style: TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.w100,
+                                      fontWeight: FontWeight.w300,
                                   )
                                 ),
                               )
@@ -177,10 +197,6 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-
-
-
-
               ),
               Spacer(),
               Align(
@@ -197,6 +213,7 @@ class LoginPage extends StatelessWidget {
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.75,
+                        height: 30,
                         child: Center(
                           child: Text("Criar nova conta".toUpperCase(),
                             style: TextStyle(
