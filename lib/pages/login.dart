@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                   //height:  MediaQuery.of(context).size.height -  (MediaQuery.of(context).size.height * (0.5)),
                   padding: EdgeInsets.only(top: 0),
                   color: Colors.white,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width * 0.9,
                   height: 400,
                   child: Column(
                     children: <Widget>[
