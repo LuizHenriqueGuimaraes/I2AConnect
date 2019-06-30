@@ -3,13 +3,16 @@ import 'package:aplicativo/pages/home.dart';
 import 'package:aplicativo/pages/list_view.dart';
 import 'package:aplicativo/pages/resultado.dart';
 
-import 'package:aplicativo/pages/about.dart';
+import 'package:aplicativo/pages/pesquisa.dart';
 
 class LayoutNavigation extends StatefulWidget{
 
+  static LayoutNavigationState state = null;
+
   @override
   State<StatefulWidget> createState() {
-    return LayoutNavigationState();
+    state = LayoutNavigationState();
+    return state;
   }
 
 }
@@ -18,29 +21,27 @@ class LayoutNavigationState extends State<LayoutNavigation>{
 
   int currentIndex = 0;
   final List<Widget> pages = [
+    PesquisaPage(),
     HomePage(),
-    //ListViewPage(),
-    AboutPage(),
-
     ResultadoViewPage(),
-    //ResultadoViewPage(),
-    //ListViewWidget(),ListViewWidget(),
-
   ];
+
+  static Widget pagina_corrente = null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("I²A CONNECT"),
+        automaticallyImplyLeading: false,
+        title: Center(child: Text("I²A CONNECT")),
       ),
 
-      body: pages[currentIndex],
+      body: (pagina_corrente != null) ? pagina_corrente : pages[currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: [
-          BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text('Home'),),
+          BottomNavigationBarItem(icon: new Icon(Icons.search), title: new Text('Pesquisa'),),
           BottomNavigationBarItem(icon: new Icon(Icons.mail), title: new Text('Messages'),),
           BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Profile')),
         ],
@@ -54,6 +55,7 @@ class LayoutNavigationState extends State<LayoutNavigation>{
   void onTabTapped(int index){
     setState(() {
       currentIndex = index;
+      pagina_corrente = pages[index];
     });
   }
 

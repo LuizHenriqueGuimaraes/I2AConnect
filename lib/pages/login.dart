@@ -238,11 +238,8 @@ class LoginPage extends StatelessWidget {
   }
 
   void login(context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LayoutNavigation()));
-//    Navigator.replace(context,
-//        oldRoute: context,
-//        newRoute: MaterialPageRoute(builder: (context) => LayoutNavigation()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutNavigation()));
+    LayoutNavigationState.pagina_corrente = null;
 
   }
 

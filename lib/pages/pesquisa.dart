@@ -1,6 +1,8 @@
+import 'package:aplicativo/pages/resultado.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
 import 'package:flutter/semantics.dart';
+import 'package:aplicativo/layout/layout__navigation.dart';
 
 enum itensPesquisa {
   producaoLeite,
@@ -10,17 +12,20 @@ enum itensPesquisa {
   coformacaoPernas
 }
 
-class AboutPage extends StatefulWidget {
+class PesquisaPage extends StatefulWidget {
 //AboutPage({Key key, this.title}) : super(key: key);
 // final String title;
   static String tag = 'about-page';
-  _AboutPage createState() => _AboutPage();
+  _PesquisaPage createState() => _PesquisaPage();
 }
 
-class _AboutPage extends State<AboutPage> {
+class _PesquisaPage extends State<PesquisaPage> {
   List<DropdownMenuItem<String>> listaDrop;
 
+  static String nulo = "Escolha uma característica";
+
   List<String> itens = [
+    nulo,
     "Produção de leite (PTA leite)",
     "Gordura do leite (PTA gordura)",
     "Proteína do leite (PTA proteína)",
@@ -28,23 +33,11 @@ class _AboutPage extends State<AboutPage> {
     "Conformação de pernas e pés"
   ];
 
-  String caracterista1 = null;
-  String caracterista2 = null;
-  String caracterista3 = null;
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Layout.getContent( context, Center(
-  //       child: Container(
-  //         decoration: BoxDecoration(
-  //           image: DecorationImage(
-  //             image: AssetImage("assets/abc.jpg"),
-  //             fit: BoxFit.cover,
-  //           ),
-  //         ),
-  //       )
-  //     ));
-  // }
+  List<String> caracteristica = [
+    null,
+    null,
+    null,
+  ];
 
   void preencherDados() {
     listaDrop = [];
@@ -130,14 +123,24 @@ class _AboutPage extends State<AboutPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
+                                isExpanded: true,
                                 items: listaDrop,
-                                value: caracterista1,
+                                value: caracteristica[0],
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text("_ _ _ _ _                     "),
+                                  child: Text(nulo),
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
+
+                                    for(int i = 0; i < caracteristica.length; i++){
+                                      if(caracteristica[i] != null){
+                                        if(caracteristica[i].compareTo(newValue) == 0){
+                                          caracteristica[i] = nulo;
+                                        }
+                                      }
+                                    }
+                                    caracteristica[0] = newValue;
                                     // print("batata: $newValue");
 
                                     // PRIMEIRA TENTATIVA
@@ -159,8 +162,6 @@ class _AboutPage extends State<AboutPage> {
                                     /*if (caracterista1 != null) {
                                       itens.add(caracterista1);
                                     } */
-                                    caracterista1 = newValue;
-
                                     //print(itens.removeAt(itens.indexOf(caracterista1)));
 
                                     //preencherDados();
@@ -204,16 +205,24 @@ class _AboutPage extends State<AboutPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
+                                isExpanded: true,
                                 items: listaDrop,
-                                value: caracterista2,
+                                value: caracteristica[1],
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text("_ _ _ _ _                     "),
+                                  child: Text(nulo),
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
-                                    // print("batata: $newValue");
-                                    caracterista2 = newValue;
+
+                                    for(int i = 0; i < caracteristica.length; i++){
+                                      if(caracteristica[i] != null){
+                                        if(caracteristica[i].compareTo(newValue) == 0){
+                                          caracteristica[i] = nulo;
+                                        }
+                                      }
+                                    }
+                                    caracteristica[1] = newValue;
                                   });
                                 },
                               ),
@@ -254,16 +263,23 @@ class _AboutPage extends State<AboutPage> {
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
+                                isExpanded: true,
                                 items: listaDrop,
-                                value: caracterista3,
+                                value: caracteristica[2],
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text("_ _ _ _ _                     "),
+                                  child: Text(nulo),
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
-                                    // print("batata: $newValue");
-                                    caracterista3 = newValue;
+                                    for(int i = 0; i < caracteristica.length; i++){
+                                      if(caracteristica[i] != null){
+                                        if(caracteristica[i].compareTo(newValue) == 0){
+                                          caracteristica[i] = nulo;
+                                        }
+                                      }
+                                    }
+                                    caracteristica[2] = newValue;
                                   });
                                 },
                               ),
@@ -275,8 +291,47 @@ class _AboutPage extends State<AboutPage> {
                   ),
                 ),
               ),
+
+              Spacer(),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: RaisedButton(
+                  onPressed: () {
+                    pesquisar(context);
+                  },
+                  elevation: 10,
+                  color: Color(0xFF244767),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: 30,
+                      child: Center(
+                        child: Text("Pesquisar".toUpperCase(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Spacer(),
+
+
             ],
           ),
         )));
+  }
+
+
+  void pesquisar(context){
+    LayoutNavigation.state.setState((){
+        LayoutNavigationState.pagina_corrente = ResultadoViewPage();
+      }
+    );
   }
 }
