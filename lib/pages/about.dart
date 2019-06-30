@@ -138,20 +138,32 @@ class _AboutPage extends State<AboutPage> {
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
-                                   // print("batata: $newValue");
+                                    // print("batata: $newValue");
+
+                                    // PRIMEIRA TENTATIVA
                                     /* if (caracterista1 != null)
                                       listaDrop.add(new DropdownMenuItem(
                                         child: new Text(caracterista1),
                                         value: caracterista1,
-                                      ));*/
+                                      ));
                                     caracterista1 = newValue;
 
-                                    /*for(int x = 0; x < listaDrop.length; x++){
+                                    for(int x = 0; x < listaDrop.length; x++){
                                       if(listaDrop.elementAt(x).value == caracterista1){
                                           print(listaDrop.removeAt(x).value);
                                           x = listaDrop.length;
                                       }
                                     } */
+
+                                    // SEGUNDA TENTATIVA
+                                    /*if (caracterista1 != null) {
+                                      itens.add(caracterista1);
+                                    } */
+                                    caracterista1 = newValue;
+
+                                    //print(itens.removeAt(itens.indexOf(caracterista1)));
+
+                                    //preencherDados();
                                   });
                                 },
                               ),
@@ -200,7 +212,7 @@ class _AboutPage extends State<AboutPage> {
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
-                                   // print("batata: $newValue");
+                                    // print("batata: $newValue");
                                     caracterista2 = newValue;
                                   });
                                 },
@@ -250,7 +262,7 @@ class _AboutPage extends State<AboutPage> {
                                 ),
                                 onChanged: (String newValue) {
                                   setState(() {
-                                   // print("batata: $newValue");
+                                    // print("batata: $newValue");
                                     caracterista3 = newValue;
                                   });
                                 },

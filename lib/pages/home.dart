@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
 import 'package:aplicativo/pages/about.dart';
 
-class HomePage extends StatelessWidget{
-
+class HomePage extends StatefulWidget {
   static String tag = 'home-page';
+  _HomePage createState() => _HomePage();
+}
+
+class _HomePage extends State<HomePage> {
   int producaoLeite = 0,
       gorduraLeite = 0,
       proteinaLeite = 0,
@@ -13,222 +16,262 @@ class HomePage extends StatelessWidget{
 
   List<String> selecionados = new List();
 
-
   @override
   Widget build(BuildContext context) {
-
     final content = Container(
-        //margin: EdgeInsets.only(top: 10.0),
-        width: MediaQuery.of(context).size.width,
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            // Cabecalho
-            Container(
-              height: MediaQuery.of(context).size.height * 0.15,
+      //margin: EdgeInsets.only(top: 10.0),
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          // Cabecalho
+          Container(
+            height: MediaQuery.of(context).size.height * 0.15,
 
-              ///alignment: Alignment.center,
-              child: Center(
-                child: Text(
-                    "Escolha até 3 características que você deseja melhorar no seu rebanho:",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    )),
-              ),
-              //  margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
+            ///alignment: Alignment.center,
+            child: Center(
+              child: Text(
+                  "Escolha até 3 características que você deseja melhorar no seu rebanho:",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  )),
             ),
+            //  margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.02),
+          ),
 
-            Container(
-              height: 1.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey,
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-            ),
+          Container(
+            height: 1.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
 
-            // Producao de leite
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              alignment: Alignment.center,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Text("Produção de leite (PTA leite)"),
-                  ),
-                  Radio(
-                    value: 1,
-                    groupValue: producaoLeite,
-                   // onChanged: (int e) => onChangeProducaoLeite(e),
-                  ),
-                  Text("Sim"),
-                  Radio(
-                    value: 0,
-                    groupValue: producaoLeite,
-                   // onChanged: (int e) => onChangeProducaoLeite(e),
-                  ),
-                  Text("Não"),
-                ],
-              ),
+          // Producao de leite
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            alignment: Alignment.center,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text("Produção de leite (PTA leite)"),
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: producaoLeite,
+                  onChanged: (int e) => onChangeProducaoLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Sim"),
+                Radio(
+                  value: 0,
+                  groupValue: producaoLeite,
+                  onChanged: (int e) => onChangeProducaoLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Não"),
+              ],
             ),
-            Container(
-              height: 1.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey,
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          Container(
+            height: 1.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          // Gordura do leite
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            alignment: Alignment.center,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text("Gordura do leite (PTA gordura)"),
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: gorduraLeite,
+                  onChanged: (int e) => onChangeGorduraLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Sim"),
+                Radio(
+                  value: 0,
+                  groupValue: gorduraLeite,
+                  onChanged: (int e) => onChangeGorduraLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Não"),
+              ],
             ),
-            // Gordura do leite
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              alignment: Alignment.center,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Text("Gordura do leite (PTA gordura)"),
-                  ),
-                  Radio(
-                    value: 1,
-                    groupValue: gorduraLeite,
-                   // onChanged: (int e) => onChangeGorduraLeite(e),
-                  ),
-                  Text("Sim"),
-                  Radio(
-                    value: 0,
-                    groupValue: gorduraLeite,
-                  //  onChanged: (int e) => onChangeGorduraLeite(e),
-                  ),
-                  Text("Não"),
-                ],
-              ),
+          ),
+          Container(
+            height: 1.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          // Proteina do leite
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            alignment: Alignment.center,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text("Proteína do leite (PTA proteína)"),
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: proteinaLeite,
+                  onChanged: (int e) => onChangeProteinaLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Sim"),
+                Radio(
+                  value: 0,
+                  groupValue: proteinaLeite,
+                  onChanged: (int e) => onChangeProteinaLeite(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Não"),
+              ],
             ),
-            Container(
-              height: 1.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey,
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          Container(
+            height: 1.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          // Conformacao do u'bere
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            alignment: Alignment.center,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text("Conformação de úbere"),
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: coformacaoUbere,
+                  onChanged: (int e) => onChangeCoformacaoUbere(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Sim"),
+                Radio(
+                  value: 0,
+                  groupValue: coformacaoUbere,
+                  onChanged: (int e) => onChangeCoformacaoUbere(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Não"),
+              ],
             ),
-            // Proteina do leite
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              alignment: Alignment.center,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Text("Proteína do leite (PTA proteína)"),
-                  ),
-                  Radio(
-                    value: 1,
-                    groupValue: proteinaLeite,
-                  //  onChanged: (int e) => onChangeProteinaLeite(e),
-                  ),
-                  Text("Sim"),
-                  Radio(
-                    value: 0,
-                    groupValue: proteinaLeite,
-                   // onChanged: (int e) => onChangeProteinaLeite(e),
-                  ),
-                  Text("Não"),
-                ],
-              ),
+          ),
+          Container(
+            height: 1.0,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.grey,
+            margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+          ),
+          // Conformacao de pernas e pe's #checar: pernas e pe's sao juntos
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            alignment: Alignment.center,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05),
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  child: Text("Conformação de pernas e pés"),
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: coformacaoPernas,
+                  onChanged: (int e) => onChangeCoformacaoPernas(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Sim"),
+                Radio(
+                  value: 0,
+                  groupValue: coformacaoPernas,
+                  onChanged: (int e) => onChangeCoformacaoPernas(e),
+                  activeColor: Color(0xFF244767),
+                ),
+                Text("Não"),
+              ],
             ),
-            Container(
-              height: 1.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey,
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-            ),
-            // Conformacao do u'bere
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              alignment: Alignment.center,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Text("Conformação de úbere"),
-                  ),
-                  Radio(
-                    value: 1,
-                    groupValue: coformacaoUbere,
-                  //  onChanged: (int e) => onChangeCoformacaoUbere(e),
-                  ),
-                  Text("Sim"),
-                  Radio(
-                    value: 0,
-                    groupValue: coformacaoUbere,
-                  //  onChanged: (int e) => onChangeCoformacaoUbere(e),
-                  ),
-                  Text("Não"),
-                ],
-              ),
-            ),
-            Container(
-              height: 1.0,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.grey,
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-            ),
-            // Conformacao de pernas e pe's #checar: pernas e pe's sao juntos
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              alignment: Alignment.center,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Text("Conformação de pernas e pés"),
-                  ),
-                  Radio(
-                    value: 1,
-                    groupValue: coformacaoPernas,
-                  //  onChanged: (int e) => onChangeCoformacaoPernas(e),
-                  ),
-                  Text("Sim"),
-                  Radio(
-                    value: 0,
-                    groupValue: coformacaoPernas,
-                  //  onChanged: (int e) => onChangeCoformacaoPernas(e),
-                  ),
-                  Text("Não"),
-                ],
-              ),
-            ),
-            // Outro mode de criar margin
-            const SizedBox(height: 20),
-            // Botao
-            RaisedButton(
-              onPressed: () {
-                //Navigator.of(context).pushNamed(AboutPage.tag);
-              },
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
+          ),
+          //Spacer(),
+          // Botao
+          /*RaisedButton(
+            onPressed: () {
+              //Navigator.of(context).pushNamed(AboutPage.tag);
+            },
+            elevation: 10,
+            color: Color(0xFF244767),
+            child: Padding(
+              padding: EdgeInsets.only(top: 10, bottom: 10),
               child: Container(
-                decoration:
-                    const BoxDecoration(color: Color.fromRGBO(34, 70, 105, 1)),
-                padding: const EdgeInsets.all(10.0),
-                child: const Text("Pesquisar", style: TextStyle(fontSize: 20)),
+                width: MediaQuery.of(context).size.width * 0.75,
+                height: 30,
+                child: Center(
+                  child: Text("Pesquisar".toUpperCase(),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400)),
+                ),
               ),
             ),
-          ],
-        ),
-      );
-    
+          ),*/
+
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: RaisedButton(
+              onPressed: () {
+                // login(context);
+              },
+              elevation: 10,
+              color: Color(0xFF244767),
+              child: Padding(
+                padding: EdgeInsets.only(top: 10, bottom: 10),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  height: 30,
+                  child: Center(
+                    child: Text("Pesquisar".toUpperCase(),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w400)),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
     return Layout.getContent(context, content);
   }
 
- /* void onChangeProducaoLeite(int e) {
+  void onChangeProducaoLeite(int e) {
     setState(() {
       if (e == 1) {
         producaoLeite = 1;
@@ -338,6 +381,5 @@ class HomePage extends StatelessWidget{
         default:
       }
     }
-  }*/
-
+  }
 }
