@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aplicativo/pages/home.dart';
-import 'package:aplicativo/pages/about.dart';
+import 'package:aplicativo/pages/pesquisa.dart';
 import 'package:aplicativo/pages/list_view.dart';
 import 'package:aplicativo/pages/login.dart';
 
@@ -10,7 +10,7 @@ class Aplicativo extends StatelessWidget{
 
   final routes = <String, WidgetBuilder>{
     HomePage.tag: (context) => HomePage(),
-    AboutPage.tag: (context) => AboutPage(),
+    PesquisaPage.tag: (context) => PesquisaPage(),
     ListViewPage.tag: (context) => ListViewPage(),
   };
 

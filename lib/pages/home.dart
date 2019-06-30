@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
-import 'package:aplicativo/pages/about.dart';
+import 'package:aplicativo/pages/pesquisa.dart';
 
 class HomePage extends StatefulWidget {
   static String tag = 'home-page';
