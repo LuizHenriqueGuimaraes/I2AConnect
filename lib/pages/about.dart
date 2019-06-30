@@ -1,13 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
+import 'package:flutter/semantics.dart';
 
 enum itensPesquisa {
-  producaoLeite, gorduraLeite, proteinaLeite, coformacaoUbere, coformacaoPernas
+  producaoLeite,
+  gorduraLeite,
+  proteinaLeite,
+  coformacaoUbere,
+  coformacaoPernas
 }
 
-class AboutPage extends StatelessWidget{
-
+class AboutPage extends StatefulWidget {
+//AboutPage({Key key, this.title}) : super(key: key);
+// final String title;
   static String tag = 'about-page';
+  _AboutPage createState() => _AboutPage();
+}
+
+class _AboutPage extends State<AboutPage> {
+  List<DropdownMenuItem<String>> listaDrop;
+
+  List<String> itens = [
+    "Produção de leite (PTA leite)",
+    "Gordura do leite (PTA gordura)",
+    "Proteína do leite (PTA proteína)",
+    "Conformação de úbere",
+    "Conformação de pernas e pés"
+  ];
+
+  String caracterista1 = null;
+  String caracterista2 = null;
+  String caracterista3 = null;
 
   // @override
   // Widget build(BuildContext context) {
@@ -23,10 +46,24 @@ class AboutPage extends StatelessWidget{
   //     ));
   // }
 
+  void preencherDados() {
+    listaDrop = [];
+
+    listaDrop = itens
+        .map((val) => new DropdownMenuItem<String>(
+              child: new Text(val),
+              value: val,
+            ))
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Layout.getContent( context, Center(
-        child: Container(
+    preencherDados();
+    return Layout.getContent(
+        context,
+        Center(
+            child: Container(
           child: Column(
             children: <Widget>[
               Padding(
@@ -65,7 +102,8 @@ class AboutPage extends StatelessWidget{
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
                 child: Card(
                   elevation: 8,
                   child: Padding(
@@ -92,14 +130,30 @@ class AboutPage extends StatelessWidget{
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
-                                items: null,
-                                onChanged: null,
+                                items: listaDrop,
+                                value: caracterista1,
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "_ _ _ _ _                     "
-                                  ),
+                                  child: Text("_ _ _ _ _                     "),
                                 ),
+                                onChanged: (String newValue) {
+                                  setState(() {
+                                   // print("batata: $newValue");
+                                    /* if (caracterista1 != null)
+                                      listaDrop.add(new DropdownMenuItem(
+                                        child: new Text(caracterista1),
+                                        value: caracterista1,
+                                      ));*/
+                                    caracterista1 = newValue;
+
+                                    /*for(int x = 0; x < listaDrop.length; x++){
+                                      if(listaDrop.elementAt(x).value == caracterista1){
+                                          print(listaDrop.removeAt(x).value);
+                                          x = listaDrop.length;
+                                      }
+                                    } */
+                                  });
+                                },
                               ),
                             ),
                           ),
@@ -110,7 +164,8 @@ class AboutPage extends StatelessWidget{
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
                 child: Card(
                   elevation: 8,
                   child: Padding(
@@ -137,14 +192,18 @@ class AboutPage extends StatelessWidget{
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
-                                items: null,
-                                onChanged: null,
+                                items: listaDrop,
+                                value: caracterista2,
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "_ _ _ _ _                     "
-                                  ),
+                                  child: Text("_ _ _ _ _                     "),
                                 ),
+                                onChanged: (String newValue) {
+                                  setState(() {
+                                   // print("batata: $newValue");
+                                    caracterista2 = newValue;
+                                  });
+                                },
                               ),
                             ),
                           ),
@@ -155,7 +214,8 @@ class AboutPage extends StatelessWidget{
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
                 child: Card(
                   elevation: 8,
                   child: Padding(
@@ -182,14 +242,18 @@ class AboutPage extends StatelessWidget{
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: DropdownButton(
-                                items: null,
-                                onChanged: null,
+                                items: listaDrop,
+                                value: caracterista3,
                                 hint: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(
-                                    "_ _ _ _ _                     "
-                                  ),
+                                  child: Text("_ _ _ _ _                     "),
                                 ),
+                                onChanged: (String newValue) {
+                                  setState(() {
+                                   // print("batata: $newValue");
+                                    caracterista3 = newValue;
+                                  });
+                                },
                               ),
                             ),
                           ),
@@ -201,8 +265,6 @@ class AboutPage extends StatelessWidget{
               ),
             ],
           ),
-        )
-      ));
+        )));
   }
-
 }
