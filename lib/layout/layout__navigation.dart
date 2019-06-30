@@ -40,9 +40,9 @@ class LayoutNavigationState extends State<LayoutNavigation>{
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         items: [
-          BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text('Home'),),
-          BottomNavigationBarItem(icon: new Icon(Icons.mail), title: new Text('Messages'),),
-          BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Profile')),
+          BottomNavigationBarItem(icon: new Icon(Icons.home), title: new Text('Início'),),
+          BottomNavigationBarItem(icon: new Icon(Icons.search), title: new Text('Pesquisa'),),
+          BottomNavigationBarItem(icon: Icon(Icons.pets), title: Text('Touros')),
         ],
         onTap: (index){
           onTabTapped(index);

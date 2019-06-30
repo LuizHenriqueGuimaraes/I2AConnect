@@ -76,29 +76,69 @@ class DetalhesPage extends StatelessWidget{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          _buildStatusItem("Distância", touro.id.toString()),
-          _buildStatusItem("Filhos", touro.id.toString()),
-          _buildStatusItem("Rebanhos", touro.id.toString()),
+          _buildStatusItem("PTA Leite(KG)", "535,1"),
+          _buildStatusItem("PTA IPP(Dias)", "-48,7"),
+          _buildStatusItem("PTA Prot.(KG)", "6,3"),
         ],
       ),
     );
   }
 
-  Widget _buildDados(BuildContext context) {
-    TextStyle bioTextStyle = TextStyle(
+  TableRow _buildDadosItem(String dado, String valor){
+    TextStyle _dadoTextStyle = TextStyle(
       fontWeight: FontWeight.w400,
       color: Color(0xFF799497),
-      fontSize: 16.0,
+      fontSize: 18.0,
+      height: 2
     );
+    
+    return TableRow(
+      
+      children: <Column>[
+        Column(
+          children: <Widget>[
+            Text(
+              dado,
+              textAlign: TextAlign.justify,
+              style: _dadoTextStyle,
+            )
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            Text(
+              valor,
+              textAlign: TextAlign.justify,
+              style: _dadoTextStyle,
+            )
+          ],
+        )
+      ],
+    );
+  }
 
+  Widget _buildDados(BuildContext context) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       padding: EdgeInsets.all(8.0),
-      child: Text(
-        touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome + " " + touro.nome,
-        textAlign: TextAlign.justify,
-        style: bioTextStyle,
-      ),
+      child: Table(
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: <TableRow>[
+          _buildDadosItem("RGD", "BASP63"),
+          _buildDadosItem("Nome", touro.nome),
+          _buildDadosItem("Núm. Filhas", "14"),
+          _buildDadosItem("Núm. Rebanhos", "5"),
+          _buildDadosItem("PTA Leite (KG)", "535,1 (C. 79%)"),
+          _buildDadosItem("PTA IPP (Dias)", "-48,7 (C. 77%)"),
+          _buildDadosItem("PTA Gordura (%)", "-0,057 (C. 59%)"),
+          _buildDadosItem("PTA Proteína (KG)", "6,3 (C. 58%)"),
+          _buildDadosItem("PTA Proteína (%)", "-0,039 (C. 64%)"),
+          _buildDadosItem("PTA ST (KG)", "21,9 (C. 57%)"),
+          _buildDadosItem("PTA ST (%)", "-0,126 (C. 61%)"),
+          _buildDadosItem("Beta Caseína", "A2A2"),
+          _buildDadosItem("Parentesco Médio", "4,29"),
+        ],
+      )
     );
   }
   
