@@ -62,7 +62,6 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
                   index: index,
                   imagem: Container(
                     decoration: BoxDecoration(
-                        //borderRadius: BorderRadius.all(Radius.circular(10)),
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
@@ -72,9 +71,12 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
                   ),
                   titulo: touros[index].nome,
                   rgd: "1030843",
-                  conf1: "TesteConfig1",
-                  conf2: "TesteConfig2",
-                  conf3: "TesteConfig3",
+                  conf1: "PTA LEITE(KG)",
+                  conf2: "PTA IPP (DIAS)",
+                  conf3: "PTA PROT. (KG)",
+                  res1: "535.1",
+                  res2: "-48.7",
+                  res3: "6.3",
                 ),
               ),
             );
@@ -93,7 +95,8 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
 
 
 class ListItem extends StatelessWidget {
-  ListItem({
+
+   ListItem({
     Key key,
     this.index,
     this.imagem,
@@ -102,6 +105,9 @@ class ListItem extends StatelessWidget {
     this.conf1,
     this.conf2,
     this.conf3,
+    this.res1,
+    this.res2,
+    this.res3,
   }) : super(key: key);
 
   final int index;
@@ -111,6 +117,9 @@ class ListItem extends StatelessWidget {
   final String conf1;
   final String conf2;
   final String conf3;
+  final String res1;
+  final String res2;
+  final String res3;
 
   AssetImage goldMedal = AssetImage("assets/gold-medal.png");
   AssetImage silverMedal = AssetImage("assets/silver-medal.png");
@@ -121,7 +130,7 @@ class ListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0),
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.15,
+        height: MediaQuery.of(context).size.width * 0.33,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -150,6 +159,9 @@ class ListItem extends StatelessWidget {
                   conf1: conf1,
                   conf2: conf2,
                   conf3: conf3,
+                  res1: res1,
+                  res2: res2,
+                  res3: res3,
                 ),
               ),
             )
@@ -168,6 +180,9 @@ class TextListItem extends StatelessWidget {
     this.conf1,
     this.conf2,
     this.conf3,
+    this.res1,
+    this.res2,
+    this.res3,
   }) : super(key: key);
 
   final String title;
@@ -175,6 +190,9 @@ class TextListItem extends StatelessWidget {
   final String conf1;
   final String conf2;
   final String conf3;
+  final String res1;
+  final String res2;
+  final String res3;
 
   @override
   Widget build(BuildContext context) {
@@ -196,13 +214,17 @@ class TextListItem extends StatelessWidget {
              ),
 
 
-            const Padding(padding: EdgeInsets.only(bottom: 2.0)),
-            Expanded(
-              flex: 1,
-              child: Column(
+            //const Padding(padding: EdgeInsets.only(bottom: 8.0)),
+
+            Spacer(),
+
+            //Expanded(
+             // flex: 1,
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+
                   Text(
                   'RGD: ',
                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Colors.black87,),
@@ -211,36 +233,76 @@ class TextListItem extends StatelessWidget {
 
                   Text(
                     '$rgd',
-                      style: const TextStyle(fontSize: 12.0, color: Colors.black54,),
+                      style: const TextStyle(fontSize: 12.0, color: Colors.black,),
                   ),
                 ],
               ),
-            ),
+           // ),
 
-
-
-              Expanded(
-                flex: 1,
-                child: Column(
+            //  Expanded(
+             //   flex: 1,
+               Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
+
                     Text(
-                      '$conf1.',
-                      style: const TextStyle(fontSize: 12.0, color: Colors.black87,),
+                      '$conf1: ',
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Colors.black87,),
                     ),
+
+
                     Text(
-                      '$conf2 · $conf3 ★',
-                      style: const TextStyle(fontSize: 12.0, color: Colors.black54,),
+                      '$res1',
+                      style: const TextStyle(fontSize: 12.0, color: Colors.black,),
                     ),
                   ],
                 ),
-              ),
+             // ),
+
+              //Expanded(
+                //flex: 1,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+
+                    Text(
+                      '$conf2: ',
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Colors.black87,),
+                    ),
 
 
+                    Text(
+                      '$res2',
+                      style: const TextStyle(fontSize: 12.0, color: Colors.black,),
+                    ),
+                  ],
+                ),
+              //),
+
+//              Expanded(
+//                flex: 1,
+                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+
+                    Text(
+                      '$conf3: ',
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12.0, color: Colors.black87,),
+                    ),
 
 
+                    Text(
+                      '$res3',
+                      style: const TextStyle(fontSize: 12.0, color: Colors.black,),
+                    ),
+                  ],
+                ),
+//              ),
 
+              Spacer(),
           ],
         ),
 
