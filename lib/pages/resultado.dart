@@ -1,3 +1,4 @@
+import 'package:aplicativo/layout/layout__navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicativo/layout/layout.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +25,13 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
     Touro(5, "Galanteio XA", "http://www.abspecplan.com.br/img/touros-destaque/349172718/galanteio.jpg"),  
   ];
 
+  void chamarPesquisa(context){
+    LayoutNavigation.state.setState((){
+      LayoutNavigationState.pagina_corrente = null;
+    }
+    );
+  }
+
   //Características do card
   int elevationCard = 5;
   double heightCard = 150.0;
@@ -37,50 +45,88 @@ class _ResultadoViewState extends State<ResultadoViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final content = Container(
-      child: ListView.builder(
-          itemCount: touros.length, //Definir o tamanho da lista
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                    CupertinoPageRoute(
-                        fullscreenDialog: true,
-                        builder: (context) =>
-                            DetalhesPage(touro: touros[index])
-                    )
-                );
-              }, // Chama o modal de detalhamento
+    final content = Column(
+      children: <Widget>[
+        
+        Container(
+          child: Container(
+            color: Color(0XFFF0F0F0),
+            child: Stack(
+              children: <Widget>[
 
-              child: Card(
-                elevation: 5,
-                // shape: RoundedRectangleBorder(
-                //   borderRadius: BorderRadius.circular(radiusImage),
-                // ),
+                Row(
 
-                child: ListItem(
-                  index: index,
-                  imagem: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              touros[index].urlImagem),
-                        )
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: (){chamarPesquisa(context);},
+                      icon: Icon(Icons.arrow_back_ios),
+                      color: Colors.blue,
+                      iconSize: 24,
                     ),
-                  ),
-                  titulo: touros[index].nome,
-                  rgd: "1030843",
-                  conf1: "PTA LEITE(KG)",
-                  conf2: "PTA IPP (DIAS)",
-                  conf3: "PTA PROT. (KG)",
-                  res1: "535.1",
-                  res2: "-48.7",
-                  res3: "6.3",
+                  ],
                 ),
-              ),
-            );
-          }),
+
+                Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  child: Text("Resultado", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                )
+
+
+              ],
+            ),
+          ),
+        ),
+
+        Container(
+          child: Expanded(
+            child: ListView.builder(
+                itemCount: touros.length, //Definir o tamanho da lista
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          CupertinoPageRoute(
+                              fullscreenDialog: true,
+                              builder: (context) =>
+                                  DetalhesPage(touro: touros[index])
+                          )
+                      );
+                    }, // Chama o modal de detalhamento
+
+                    child: Card(
+                      elevation: 5,
+                      // shape: RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular(radiusImage),
+                      // ),
+
+                      child: ListItem(
+                        index: index,
+                        imagem: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    touros[index].urlImagem),
+                              )
+                          ),
+                        ),
+                        titulo: touros[index].nome,
+                        rgd: "1030843",
+                        conf1: "PTA LEITE(KG)",
+                        conf2: "PTA IPP (DIAS)",
+                        conf3: "PTA PROT. (KG)",
+                        res1: "535.1",
+                        res2: "-48.7",
+                        res3: "6.3",
+                      ),
+                    ),
+                  );
+                }),
+          ),
+        ),
+      ],
     );
     return Layout.getContent(context, content);
   }
@@ -313,4 +359,5 @@ class TextListItem extends StatelessWidget {
     );
 
   }
+
 }

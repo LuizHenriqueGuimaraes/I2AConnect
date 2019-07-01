@@ -5,7 +5,7 @@ import 'package:aplicativo/pages/detalhes.dart';
 import 'package:aplicativo/models/touro.dart';
 
 
-class ResultadoViewPage extends StatefulWidget {
+class PaginaViewPage extends StatefulWidget {
   static String tag = 'resultado-page';
 
   @override
@@ -13,7 +13,7 @@ class ResultadoViewPage extends StatefulWidget {
 }
 
 
-class _ResultadoViewState extends State<ResultadoViewPage> {
+class _ResultadoViewState extends State<PaginaViewPage> {
   List itens = getListData();
 
   List<Touro> touros = [

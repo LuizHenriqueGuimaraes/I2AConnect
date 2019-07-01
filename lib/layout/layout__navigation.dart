@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aplicativo/pages/home.dart';
 import 'package:aplicativo/pages/list_view.dart';
+import 'package:aplicativo/pages/pagina.dart';
 import 'package:aplicativo/pages/resultado.dart';
 
 import 'package:aplicativo/pages/pesquisa.dart';
@@ -23,7 +24,8 @@ class LayoutNavigationState extends State<LayoutNavigation>{
   final List<Widget> pages = [
     PesquisaPage(),
     HomePage(),
-    ResultadoViewPage(),
+    PaginaViewPage(),
+    //ResultadoViewPage(),
   ];
 
   static Widget pagina_corrente = null;
