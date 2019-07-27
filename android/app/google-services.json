@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "125939425248",
+    "firebase_url": "https://testeinbovis.firebaseio.com",
+    "project_id": "testeinbovis",
+    "storage_bucket": "testeinbovis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125939425248:android:0e328d94a8dfa77e",
+        "android_client_info": {
+          "package_name": "com.luizhg.aplicativo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125939425248-tc255hdvue4pukgu8t55m7kqhbeed3m1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAYrJ5Qb0sLZ3X-xjMI3ia0A8jrRIZVaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125939425248-tc255hdvue4pukgu8t55m7kqhbeed3m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
