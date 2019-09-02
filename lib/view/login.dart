@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart' as prefix1;
 import 'package:flutter/material.dart';
-import 'package:aplicativo/layout/layout.dart';
 import 'package:aplicativo/layout/layout__navigation.dart';
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:aplicativo/pages/cadastro.dart';
 
 import 'package:flutter/widgets.dart' as prefix0;
 
@@ -26,47 +26,6 @@ class LoginPage extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
           child: Column(
             children: <Widget>[
-              /*
-              Container(
-                  width: MediaQuery.of(context).size.width, //Pega o tamanho da tela
-                  height: MediaQuery.of(context).size.height * (0.4), //Altura é 40% da tela
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Color(0xFF120A8F), Color(0xFF1E84D4)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
-                      borderRadius:
-                          BorderRadius.only(bottomLeft: Radius.circular(160))),
-                  child: Column(
-                    // ===============> Stack serve para sobrepor um widget em cima do outro
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Align(
-                          alignment: Alignment.center,
-                          child: new Icon(
-                            Icons.access_time,
-                            size: MediaQuery.of(context).size.width * 0.4,
-                            color: Colors.white,
-                          )),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 32,
-                            right: 32,
-                          ),
-                          child: Text(
-                            "I²A CONNECT",
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-              */
               Spacer(),
               Card(
                 elevation: 10,
@@ -75,7 +34,7 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.only(top: 0),
                   color: Colors.white,
                   width: MediaQuery.of(context).size.width * 0.9,
-                  height: 400,
+                  height: 450,
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -123,11 +82,12 @@ class LoginPage extends StatelessWidget {
                         ),
                         //Login TextField
                         Container(
-                          margin: EdgeInsets.only(top: 32, left: 16, right: 16),
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEEE)
-                          ),
+                          //margin: EdgeInsets.only(top: 32, left: 16, right: 16),
+                          //height: 50,
+                          padding:  EdgeInsets.only(top: 32, left: 16, right: 16),
+//                          decoration: BoxDecoration(
+//                            color: Color(0xFFEEEEEE)
+//                          ),
                           child: TextFormField(
                             validator: (input){
                               if(input.isEmpty)
@@ -144,11 +104,11 @@ class LoginPage extends StatelessWidget {
                         ),
                         //Senha TextField
                         Container(
-                          height: 50,
-                          margin: EdgeInsets.only(top: 8, left: 16, right: 16),
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEEE)
-                          ),
+                          //height: 50,
+                          padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+//                          decoration: BoxDecoration(
+//                            color: Color(0xFFEEEEEE)
+//                          ),
                           child: TextFormField(
                             obscureText: true,
                             validator: (input){
@@ -220,9 +180,7 @@ class LoginPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 48),
                   child: RaisedButton(
-                    onPressed: (){
-                      login(context);
-                    },
+                    onPressed: (){cadastro(context);},
                     elevation: 10,
                     color: Color(0xFF244767),
                     child: Padding(
@@ -267,4 +225,10 @@ class LoginPage extends StatelessWidget {
       }
     }
   }
+
+  cadastro(context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroPage()));
+  }
+
+
 }
